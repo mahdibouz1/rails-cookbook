@@ -11,5 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :categories
+  resources :categories do
+    resources :bookmarks, only: [:new, :create]  # This will handle 'new' and 'create' actions
+  end
 end
