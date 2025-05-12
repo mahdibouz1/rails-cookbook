@@ -1,9 +1,6 @@
-<h1>Add a New Bookmark to <%= @category.name %></h1>
-
-<%= form_with model: @bookmark, url: category_bookmarks_path(@category) do |form| %>
-  <div>
-    <%= form.label :recipe_id, 'Select Recipe' %>
-    <%= form.collection_select :recipe_id, Recipe.all, :id, :name %>
-  </div>
-  <%= form.submit 'Add Bookmark' %>
+<h1>Add a Recipe to <%= @category.name %></h1>
+<%= simple_form_for [@category, @bookmark] do |f| %>
+  <%= f.input :comment%>
+  <%= f.association :recipe %>
+  <%= f.submit %>
 <% end %>

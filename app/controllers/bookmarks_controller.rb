@@ -1,23 +1,24 @@
 class BookmarksController < ApplicationController
-  before_action :set_category
-
   def new
+    @category = Category.find(params[:category_id])
     @bookmark = Bookmark.new
   end
 
   def create
-    @bookmark = @category.bookmarks.new(bookmark_params)
+    @category = Category.find(params[:category_id])
+    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.category = @category
     if @bookmark.save
-      redirect_to category_path(@category), notice: "Recipe added!"
+      redirect_to category_path(@category)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @bookmark = @category.bookmarks.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to category_path(@category), notice: "Recipe removed!"
+    redirect_to category_path(@category)
   end
 
   private
@@ -27,6 +28,6 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:recipe_id)
+    params.require(:bookmark).permit(:recipe_id, :comment)
   end
 end

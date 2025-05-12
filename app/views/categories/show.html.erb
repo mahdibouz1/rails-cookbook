@@ -1,3 +1,11 @@
 <h1><%= @category.name %></h1>
-<p>Details about the category.</p>
-<%= link_to 'Back to Categories', categories_path %>
+
+<ul>
+  <% @category.bookmarks.each do |bookmark| %>
+    <li>
+      <h3><%= bookmark.recipe.name %></h3>
+      <p><%= bookmark.recipe.description %></p>
+      <%= link_to "Delete" bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </li>
+  <% end %>
+</ul>
