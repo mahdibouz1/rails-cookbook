@@ -1,7 +1,23 @@
-<h1>CookBook</h1>
+<div class="navbar">
+  <%= image_tag 'logo.png' %>
+
+<div>
+  <%= link_to 'Home', %>
+  <%= link_to ' New Categories' %>
+  </div>
+</div>
+
+<div class="banner" style="background-image: url('<%= image_path "banner.jpg" %>');">
+  <div>
+    <h1>CookBook</h1>
+    <h3>Save your favorite recipes</h3>
+  </div>
+</div>
+
+<%= link_to 'New Category', new_category_path %>
+
 <ul>
   <% @categories.each do |category| %>
     <li><%= link_to category.name, category_path(category) %></li>
   <% end %>
 </ul>
-<%= link_to 'New Category', new_category_path %>
