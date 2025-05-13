@@ -5,7 +5,7 @@
     <li>
       <h3><%= bookmark.recipe.name %></h3>
       <p><%= bookmark.recipe.description %></p>
-      <%= link_to "Delete" bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </li>
   <% end %>
 </ul>
