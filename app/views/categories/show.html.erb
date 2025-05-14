@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: url('');">
+<div class="banner" style="background-image: url('https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg');">
   <div>
     <h1><%= @category.name %></h1>
   </div>
@@ -18,7 +18,9 @@
 
         <% link_to 'Delete', bookmark_path(bookmark),
            data: {turbo_method: :delete, turbo_confirm: "Are you sure"}
-           class: "btn-delete" %>
+           class: "btn-delete" do %>
+           <i class="fa-solid fa-trash"></i>
+        <% end %>
 
         <div class="card-trip-description">
           <h3><%= bookmark.recipe.name %></h3>
@@ -37,3 +39,8 @@
       </div>
 
   <% end %>
+  </div>
+</div>
+
+<% link_to 'Add a recipe', new_category_bookmark_path(@category) %>
+<% link_to 'Home', categories_path %>
